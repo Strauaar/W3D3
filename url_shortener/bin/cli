@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+puts 'Input email:'
+email = gets.chomp
+if User.find_by(email: email).nil?
+  puts 'Sorry this is an exclusive service'
+else
+  user = User.find_by(email: email)
+  puts 'Would you like to visit a url?(y/n)'
+  input = gets.chomp
+  if input == 'n'
+    puts 'Would you like to create a URL?'
+    input2 = gets.chomp
+    if input2 == 'y'
+      puts 'Enter a url:'
+      url = gets.chomp
+      new = ShortenedUrl.god_mode(user, url)
+      p new
+    else
+    end
+
+  elsif input == 'y'
+    p user.submitted_urls.first[:short_url]
+  else
+  end
+end
